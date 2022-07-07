@@ -27,3 +27,16 @@ const person3 = {
 
 //console.log(person2.greet());
 console.log(person3.greet());
+
+const hobbies = ['Sports', 'Cooking'];
+for(let hobby of hobbies) {
+    console.log(hobby);
+}
+console.log('--> Array functions:');
+
+console.log(hobbies.map(hobby => {
+    return 'Hobby: ' + hobby;
+}));
+
+console.log(hobbies.map(hobby => 'Hobby: ' + hobby));
+
