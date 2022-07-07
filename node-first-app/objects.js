@@ -29,6 +29,11 @@ const person3 = {
 console.log(person3.greet());
 
 const hobbies = ['Sports', 'Cooking'];
+
+hobbies.push('Guitar');
+// Reference types only store addresses where the array is stored in memory
+// const - pointer (address) - it is not changed.
+
 for(let hobby of hobbies) {
     console.log(hobby);
 }
