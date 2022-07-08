@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const requestHandler = (req, res) => {
     const url = req.url;
     const method = req.method;
@@ -38,4 +39,17 @@ const requestHandler = (req, res) => {
     res.end();
 };
 
-module.exports = requestHandler;
+// module.exports = {
+//     handler: requestHandler,
+//     someText: "Some Hardcoded Text"
+// };
+
+//OR
+
+// module.exports.handler = requestHandler;
+// module.exports.someText = "Some Hardcoded Text";
+
+//OR nodejs shortcuts:
+
+exports.handler = requestHandler;
+exports.someText = "Some Hardcoded Text";
