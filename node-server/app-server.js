@@ -17,7 +17,6 @@ const server = http.createServer((req, res) => {
     if(url === '/message' && req.method === 'POST') {
         
         const body = [];
-        
         req.on('data', (chunk) => {
             console.log(chunk);
             body.push(chunk);
@@ -26,10 +25,12 @@ const server = http.createServer((req, res) => {
         return req.on('end', () => {
             const parsedBody = Buffer.concat(body).toString(); //body will be text
             const message = parsedBody.split('=')[1];
-            fs.writeFileSync('message.txt', message);
-            res.statusCode = 302;
-            res.setHeader('Location', '/');
-            return res.end();
+            
+            fs.writeFile('message.txt', message, err => {
+                res.statusCode = 302;
+                res.setHeader('Location', '/');
+                return res.end();
+            });
         });
     }
 
