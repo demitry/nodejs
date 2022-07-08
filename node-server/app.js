@@ -3,7 +3,6 @@
     You can always do that by pressing CTRL + C in the terminal/ command prompt window where you started your server (i.e. where you ran node app.js).
 */
 
-const { write, read } = require('fs');
 const http = require('http');
 
 //function rqListener(req, res) {};
