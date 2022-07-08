@@ -13,6 +13,28 @@ const server = http.createServer((req, res) => {
         return res.end();        
     }
     if(url === '/message' && req.method === 'POST') {
+        
+        const body = [];
+        
+        req.on('data', (chunk) => {
+            console.log(chunk);
+            body.push(chunk);
+        });   // listen for data event
+        
+        req.on('end', () => {
+            const parsedBody = Buffer.concat(body).toString(); //body will be text
+            console.log('parsedBody: ' + parsedBody);
+            const message = parsedBody.split('=')[1];
+            console.log('message: ' + message);
+            fs.writeFileSync('message.txt', message);            
+        });
+
+        /*
+        node .\app-server.js
+        <Buffer 6d 65 73 73 61 67 65 3d 61 73 64 61>
+        parsedBody: message=asda
+        */
+
         fs.writeFileSync('message.txt', 'DUMMY');
         //res.writeHead(302, {});
         res.statusCode = 302;
